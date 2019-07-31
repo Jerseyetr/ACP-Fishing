@@ -1,0 +1,167 @@
+<configs>
+	<append xpath="/items">
+	 
+		<item name="Fishing Rod">
+			<property name="DescriptionKey" value="FishingRodDesc"/>
+			<property name="DisplayType" value="melee"/>
+			<property name="CustomIcon" value="Fishing Rod"/>
+			<property name="Meshfile" value="Items/Weapons/Ranged/Bows/WoodenBow/WoodenBowPrefab" />
+			<property name="Material" value="Mmetal" />
+			<property name="HoldType" value="4" />
+			<property name="Stacknumber" value="1" />
+			<property name="EconomicBundleSize" value="15"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="FuelValue" value="16" />
+			<property name="Weight" value="48" />
+			<property class="Action0">
+				<property name="Class" value="ExchangeItem"/>
+				<property name="Delay" value="1.8"/>
+				<property name="Range" value="2.4"/>
+				<property name="Sphere" value="0.2"/>
+				<property name="Change_item_to" value="Fishing Rod Full"/>
+				<property name="Focused_blockname_1" value="water"/>
+				<property name="Focused_blockname_2" value="waterMoving"/>
+				<property name="Focused_blockname_3" value="waterStaticBucket"/>
+				<property name="Focused_blockname_4" value="waterMovingBucket"/>
+				<property name="Focused_blockname_5" value="terrWaterPOI"/>
+				<property name="Sound_start" value="SlowSwoosh"/>
+			</property>
+			<property class="Action1">
+				<property name="Class" value="DynamicMelee"/>
+				<property name="Damage_type" value="Slashing"/>
+				<property name="Sphere" value="0.1"/>
+				<property name="Sound_start" value="swoosh"/>
+				<property name="ToolCategory.Fishing" value="1" param1="1"/>
+			</property>
+			<property name="Group" value="Tools/Traps,Basics" />
+		</item>
+		
+		<item name="Fishing Rod Full">
+			<property name="DescriptionKey" value="FishingRodFullDesc"/>
+			<property name="DisplayType" value="melee"/>
+			<property name="CustomIcon" value="Fishing Rod Full"/>
+			<property name="Meshfile" value="Items/Weapons/Ranged/Bows/WoodenBow/WoodenBowPrefab" />
+			<property name="Material" value="Mmetal" />
+			<property name="HoldType" value="4" />
+			<property name="Stacknumber" value="1" />
+			<property name="EconomicBundleSize" value="15"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="FuelValue" value="16" />
+			<property name="Weight" value="48" />
+				<property class="Action0">
+				<property name="Class" value="PlaceAsBlock"/>
+				<property name="Delay" value="0.5"/>
+				<property name="Blockname" value="Livewell"/>
+				<property name="Change_item_to" value="Fishing Rod"/>
+				<property name="Sound_start" value="bucketplace_water"/>
+			</property>
+		<property name="Group" value="Tools/Traps,Basics"/>
+	</item>
+	
+    <item name="Raw Fish">
+		<property name="DescriptionKey" value="RawFishDesc"/>
+		<property name="Meshfile" value="Items/Misc/parcelPrefab"/>
+		<property name="Material" value="Morganic"/>
+		<property name="HoldType" value="31"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="10"/>
+		<property name="CraftingIngredientTime" value="15"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="1.0"/>
+			<property name="Use_time" value="..."/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>
+		<property name="Smell" value="ExLargeSmell"/>
+		<property name="Group" value="Food/Cooking"/>
+		
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" target="self" buff="buffProcessConsumables"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" target="self" buff="buffIllFoodPoisoning0">
+				<requirement name="RandomRoll" seed_type="Random" target="self" min_max="0,100" operation="LTE" value="30"/>
+			</triggered_effect>
+				<display_value name="FoodPoisoningRisk" value=".5" />
+		</effect_group>
+	</item>
+	
+	<item name="Grilled Fish">
+		<property name="DescriptionKey" value="GrilledFishDesc"/>
+		<property name="CustomIcon" value="Grilled Fish"/>
+		<property name="Meshfile" value="Items/Misc/parcelPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="HoldType" value="31"/>
+		<property name="Material" value="Morganic"/>
+		<property name="Stacknumber" value="50"/> 
+		<property name="EconomicValue" value="24"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="2.1"/>
+			<property name="Use_time" value="..."/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>
+		<property name="Smell" value="mediumSmell"/>
+		<property name="Group" value="Food/Cooking"/>
+		
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" target="self" buff="buffProcessConsumables"/>
+		</effect_group>
+	</item>
+	
+	<item name="Boiled Fish">
+		<property name="DescriptionKey" value="BoiledFishDesc"/>
+		<property name="CustomIcon" value="Boiled Fish"/>
+		<property name="Meshfile" value="Items/Misc/parcelPrefab"/>
+		<property name="Material" value="Morganic"/>
+		<property name="HoldType" value="31"/>
+		<property name="Stacknumber" value="50"/>
+		<property name="EconomicValue" value="10"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="2.1"/>
+			<property name="Use_time" value="..."/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>
+		<property name="Smell" value="mediumSmell"/>
+		<property name="Group" value="Food/Cooking"/>
+		
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="10"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" target="self" buff="buffProcessConsumables"/>
+		</effect_group>
+	</item>
+	
+	<item name="Charred Fish">
+		<property name="DescriptionKey" value="CharredFishDesc"/>
+		<property name="CustomIcon" value="Charred Fish"/>
+		<property name="Meshfile" value="Items/Misc/parcelPrefab"/>
+		<property name="Material" value="Morganic"/>
+		<property name="HoldType" value="31"/>
+		<property name="Stacknumber" value="50"/>
+		<property name="EconomicValue" value="10"/>
+		<property name="SellableToTrader" value="false"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="2.1"/>
+			<property name="Use_time" value="..."/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>
+		<property name="Smell" value="largeSmell"/>
+		<property name="Group" value="Food/Cooking"/>
+		
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="subtract" value="5"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" target="self" buff="buffProcessConsumables"/>
+			<display_value name="waterAmount" value="-5" />
+		</effect_group>
+	</item>
+
+</append>
+</configs>

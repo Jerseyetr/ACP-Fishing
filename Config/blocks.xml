@@ -1,0 +1,21 @@
+<configs>
+
+	<append xpath="/blocks">
+	
+		<block name="Livewell">
+			<property name="Material" value="Morganic"/>
+			<property name="Group" value="Tools/Traps,Basics"/>
+			<property name="MaxDamage" value="2"/>
+			<property name="StabilitySupport" value="true"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Mesh" value="models"/>
+			<property name="Model" value="Entities/LootContainers/coolerPrefab" param1="main_mesh"/>
+			<drop event="Harvest" name="Raw Fish" tool_category="Fishing" prob="0.25" count="1" />
+			<drop event="Harvest" name="drinkCanEmpty" tool_category="Fishing" prob="0.20" count="1" />
+			<drop event="Harvest" name="armorLeatherBoots" tool_category="Fishing" prob="0.20" count="1" />
+			<drop event="Harvest" name="cowboyHat" tool_category="Fishing" prob="0.20" count="1" />
+			<drop event="Destroy" count="0" prob="1" />
+		</block>
+
+	</append>
+</configs>

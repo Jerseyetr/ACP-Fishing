@@ -1,0 +1,6 @@
+FishingRodDesc,items,mod,New,Is used to catch fish.,,,,
+FishingRodFullDesc,items,mod,New,Fishing Rod Full.,,,,
+RawFishDesc,items,mod,New,Raw Fish.,,,,
+GrilledFishDesc,items,mod,New,Grilled Fish.,,,,
+BoiledFishDesc,items,mod,New,Boiled Fish.,,,,
+CharredFishDesc,items,mod,New,Charred Fish.,,,,
